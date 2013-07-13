@@ -2,6 +2,9 @@
 # Simple setup.sh for configuring Ubuntu 12.04 LTS EC2 instance
 # for headless setup. 
 
+# Install heroku (lecture 2)
+wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+
 # Install nvm: node-version manager
 # https://github.com/creationix/nvm
 sudo apt-get install -y git-core
@@ -34,10 +37,15 @@ fi
 if [ -d .emacs.d/ ]; then
     mv .emacs.d .emacs.d~
 fi
-git clone https://github.com/startup-class/dotfiles.git
+git clone https://github.com/trjh/dotfiles.git
 ln -sb dotfiles/.screenrc .
 ln -sb dotfiles/.bash_profile .
 ln -sb dotfiles/.bashrc .
 ln -sb dotfiles/.bashrc_custom .
 ln -sf dotfiles/.emacs.d .
+ln -sf dotfiles/.vimrc .
 
+#
+# download my bitstarter
+#
+git clone git@github.com:trjh/bitstarter.git
