@@ -31,9 +31,12 @@ npm install -g jshint
 # https://github.com/MatthewMueller/cheerio
 # and commander (command line interpretation)
 # https://github.com/visionmedia/commander.js
+# and restler
+# https://github.com/danwrong/restler
 # for grader.js
 npm install cheerio
 npm install commander
+npm install restler
 
 # Install rlwrap to provide libreadline features with node
 # See: http://nodejs.org/api/repl.html#repl_repl
