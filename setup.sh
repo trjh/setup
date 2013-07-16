@@ -5,6 +5,14 @@
 # Install heroku (lecture 2)
 wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 
+sudo apt-get update
+
+# Install python, nodejs (lecture 3)
+sudo apt-get install -y python-software-properties python g++ make
+sudo add-apt-repository ppa:chris-lea/node.js
+sudo apt-get update
+sudo apt-get install -y nodejs
+
 # Install nvm: node-version manager
 # https://github.com/creationix/nvm
 sudo apt-get install -y git-core
@@ -18,6 +26,14 @@ nvm use v0.10.12
 # Install jshint to allow checking of JS code within emacs
 # http://jshint.com/
 npm install -g jshint
+
+# Install cheerio "web scraping" tool,
+# https://github.com/MatthewMueller/cheerio
+# and commander (command line interpretation)
+# https://github.com/visionmedia/commander.js
+# for grader.js
+npm install cheerio
+npm install commander
 
 # Install rlwrap to provide libreadline features with node
 # See: http://nodejs.org/api/repl.html#repl_repl
@@ -48,4 +64,5 @@ ln -sf dotfiles/.vimrc .
 #
 # download my bitstarter
 #
+ssh -o "StrictHostKeyChecking no" -T git@github.com
 git clone git@github.com:trjh/bitstarter.git
