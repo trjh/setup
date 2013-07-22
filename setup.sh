@@ -56,16 +56,32 @@ fi
 if [ -d .emacs.d/ ]; then
     mv .emacs.d .emacs.d~
 fi
-git clone https://github.com/trjh/dotfiles.git
-ln -sb dotfiles/.screenrc .
-ln -sb dotfiles/.bash_profile .
-ln -sb dotfiles/.bashrc .
-ln -sb dotfiles/.bashrc_custom .
-ln -sf dotfiles/.emacs.d .
-ln -sf dotfiles/.vimrc .
 
 #
-# download my bitstarter
+# add github.com host keys
 #
-ssh -o "StrictHostKeyChecking no" -T git@github.com
-git clone git@github.com:trjh/bitstarter.git
+cat >> ~/.ssh/known_hosts << EOF
+|1|TvQ8CXTFkHmtECmKwSfYuyOhZaQ=|MckSEtPnNRW3o28RnSLDi+UpzrM= ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
+|1|NvgQqxvDK7zN8ni3E6Ojc6rGNjM=|FFBmPApv1Px2zB/LPpq0tN8kJpY= ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
+EOF
+
+#
+# add dotfiles, and other git repositories
+#
+git clone git@github.com:trjh/dotfiles.git
+if [[ $? != 0 ]]; then
+    echo git ssh connection failed;
+else 
+    ln -sb dotfiles/.screenrc .
+    ln -sb dotfiles/.bash_profile .
+    ln -sb dotfiles/.bashrc .
+    ln -sb dotfiles/.bashrc_custom .
+    ln -sf dotfiles/.emacs.d .
+    ln -sf dotfiles/.vimrc .
+    ln -sf dotfiles/.gitconfig .
+
+    #
+    # download my bitstarter
+    #
+    git clone git@github.com:trjh/bitstarter.git
+fi
