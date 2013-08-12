@@ -5,7 +5,9 @@
 # Install heroku (lecture 2)
 wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 
-sudo apt-get update
+sudo apt-get update	# update list of available packages/versions
+sudo apt-get upgrade	# install newest version of packages
+sudo apt-get install -y curl
 
 # Install python, nodejs (lecture 3)
 sudo apt-get install -y python-software-properties python g++ make
@@ -15,7 +17,7 @@ sudo apt-get install -y nodejs
 
 # Install nvm: node-version manager
 # https://github.com/creationix/nvm
-sudo apt-get install -y git-core
+sudo apt-get install -y git
 curl https://raw.github.com/creationix/nvm/master/install.sh | sh
 
 # Load nvm and install latest production node
@@ -44,9 +46,15 @@ sudo apt-get install -y rlwrap
 
 # Install emacs24
 # https://launchpad.net/~cassou/+archive/emacs
+# i don't know why i do this -- i don't use it - trjh
 sudo apt-add-repository -y ppa:cassou/emacs
 sudo apt-get update
-sudo apt-get install -y emacs24 emacs24-el emacs24-common-non-dfsg
+sudo apt-get install -y emacs24-nox emacs24-el emacs24-common-non-dfsg
+
+#
+# more misc for me
+#
+sudo apt-get install -y colordiff
 
 # git pull and install dotfiles as well
 cd $HOME
@@ -79,6 +87,7 @@ else
     ln -sf dotfiles/.emacs.d .
     ln -sf dotfiles/.vimrc .
     ln -sf dotfiles/.gitconfig .
+    ln -sf dotfiles/.colordiffrc
 
     #
     # download my bitstarter
