@@ -51,6 +51,9 @@ sudo apt-add-repository -y ppa:cassou/emacs
 sudo apt-get update
 sudo apt-get install -y emacs24-nox emacs24-el emacs24-common-non-dfsg
 
+# for HW7
+sudo apt-get install -y postgresql postgresql-contrib
+
 #
 # more misc for me
 #
@@ -93,4 +96,20 @@ else
     # download my bitstarter
     #
     git clone git@github.com:trjh/bitstarter.git
+
+    # configure it
+    cd bitstarter
+    git remote add heroku git@heroku.com:hidden-cove-5100.git
+    heroku git:remote -a trjh-bitstarter-s-mooc --remote staging-heroku
+    heroku git:remote -a trjh-bitstarter-mooc --remote production-heroku
+    # if the latter two don't work, the whole heroku thing might need a login
+    # first
+
+    #
+    # more HW7
+    #
+    cd $HOME
+    git clone https://github.com/startup-class/bitstarter-ssjs-db.git
+    cd bitstarter-ssjs-db
+    npm install
 fi
