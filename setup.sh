@@ -8,8 +8,8 @@ wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 sudo add-apt-repository ppa:chris-lea/node.js	# (lecture 3)
 sudo add-apt-repository ppa:cassou/emacs	# emacs24
 
-sudo apt-get update	# update list of available packages/versions
-sudo apt-get upgrade	# install newest version of packages
+sudo apt-get update		# update list of available packages/versions
+sudo apt-get upgrade -q -y	# install newest version of packages
 sudo apt-get install -q -y curl
 
 # Install python, nodejs (lecture 3)
