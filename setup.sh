@@ -91,6 +91,7 @@ else
     ln -sf dotfiles/.vimrc .
     ln -sf dotfiles/.gitconfig .
     ln -sf dotfiles/.colordiffrc
+    ln -sf setup/gitcheck.sh
 
     #
     # download my bitstarter
