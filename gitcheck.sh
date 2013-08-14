@@ -4,9 +4,11 @@
 
 cd ~
 for i in *; do
-    cd $i;
-    echo $i;
-    git status;
-    echo;
-    cd ..;
+    if [[ -d $i/.git ]]; then
+	cd $i;
+	echo ::DIRECTORY $i::;
+	git status;
+	echo;
+	cd ..;
+    fi
 done
