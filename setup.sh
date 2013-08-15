@@ -112,4 +112,11 @@ else
     git clone https://github.com/startup-class/bitstarter-ssjs-db.git
     cd bitstarter-ssjs-db
     npm install
+    ln -s ../bitstarter/.env
+    for i in index.html web.js; do
+	mv $i ${i}.bak
+	ln -s ../bitstarter/ssjs-$i $i
+    done
+    mv setup-ssjs.sh setup-ssjs.sh.bak
+    ln -s ../bitstarter/setup-ssjs.sh
 fi
